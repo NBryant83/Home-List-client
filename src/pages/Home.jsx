@@ -1,9 +1,12 @@
+
 const Home = () => {
-    return (
-        <div>
-            <h1>Welcome to Home List! 🙋🏾‍♀️ </h1>
-        </div>
-    )
+  return(
+    <div>
+      <h2>Welcome, user 👥</h2>
+    </div>
+
+
+  )
 }
 
 export default Home
