@@ -46,3 +46,17 @@ nav a:hover {
   border-radius: 5px;
   padding: 2%;
 }
+
+.list-container {  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-stuff {
+  border: 1px solid salmon;
+}
+
+.old-stuff {
+  border: 1px solid burlywood;
+}
