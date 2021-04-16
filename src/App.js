@@ -11,7 +11,8 @@ import SaveToken from "./pages/SaveToken"
 import jwt from 'jsonwebtoken'
 import NoMatch from "./pages/NoMatch"
 import Profile from "./pages/Profile"
-
+import Templates from "./pages/Templates"
+import Lists from "./pages/Lists"
 
 const App = () => {
     const [user, setUser] = useState(null)
@@ -59,6 +60,12 @@ const App = () => {
                     </Route>
                     <Route path="*">
                         <NoMatch />
+                    </Route>
+                    <Route path="/lists">
+                        <Lists />
+                    </Route>
+                    <Route path="/templates">
+                        <Templates />
                     </Route>
                 </Switch>
             </div>

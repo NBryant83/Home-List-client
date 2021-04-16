@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Redirect } from "react-router"
-import axios from 'axios'
+// import axios from 'axios'
 
 const Profile = ({ user }) => {
     useEffect(() => {
@@ -13,9 +13,9 @@ const Profile = ({ user }) => {
                 'Authorization': token
             }
             
-            const res = await axios.get(`${url}/exampleResource`, { headers: authHeaders })
-            const data = res.data
-            console.log(data)
+            // const res = await axios.get(`${url}/exampleResource`, { headers: authHeaders })
+            // const data = res.data
+            // console.log(data)
         }
         fetchLockedResource()
     }, [])
