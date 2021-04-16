@@ -1,7 +1,13 @@
+import {useState} from "react"
+import Home from "./Home"
 
 const Lists = () => {
+  const [items, setItems] = useState([])
+
   return(
-    <div>Hello from Lists 🆕</div>
+    <div>
+      <h1>Div of lists</h1>      
+    </div>
   )
 }
 

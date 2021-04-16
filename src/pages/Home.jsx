@@ -1,20 +1,58 @@
+// useEffect for axios grab lists from db
+import {useEffect, useState} from "react"
+import Lists from "./Lists";
+// map to user interface element (list/home tag/component)
 
-const Home = () => {
+
+const Home = (props) => {
+
+  const [input, setInput] = useState("")
+
+
+  const handleChange = e => {
+    setInput(e.target.value);
+
+  }
+  
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(input)
+    
+    setInput("");
+  }
+
+  const [list, setList] = useState({
+    
+  })
+
   return(
     <div>      
       <section>
-        <h2>Hi user 👥, what would you like to do? </h2>
+        <h2>Hi user 👥, new list or running off with an established one? </h2>
       </section>
 
       <div className="list-container">
-        <section className="new-stuff">
-          <h3>New List 📝 </h3>
-          <h3>New Template 📝 </h3>
+        <section className="old-stuff">
+          <div>
+              <Lists />
+          </div>          
         </section>
         
-        <section className="old-stuff">
-          <h3>Choose List 📄 </h3>
-          <h3>Choose Template 📄 </h3>
+        <section className="new-stuff">          
+          <form onSubmit={handleSubmit}>
+
+            <label htmlFor="list-item" />
+            <input 
+              type="text" 
+              id="list-item" 
+              placeholder="add an item" 
+              onChange={handleChange}
+              value={input}
+            />
+
+            <input type="submit" id="button" value="add item to new list" />
+          </form>
         </section>
         
       </div>

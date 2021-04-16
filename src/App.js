@@ -55,17 +55,17 @@ const App = () => {
                     <Route path="/saveToken">
                         <SaveToken setUser={setUser} />
                     </Route>
-                    <Route>
+                    <Route path="/profile">
                         <Profile user={user} />
-                    </Route>
-                    <Route path="*">
-                        <NoMatch />
                     </Route>
                     <Route path="/lists">
                         <Lists />
                     </Route>
                     <Route path="/templates">
                         <Templates />
+                    </Route>
+                    <Route path="*">
+                        <NoMatch />
                     </Route>
                 </Switch>
             </div>

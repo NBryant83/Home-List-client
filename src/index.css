@@ -51,13 +51,17 @@ nav a:hover {
 .list-container {  
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
-.new-stuff {
+/* .new-stuff {
   border: 1px solid salmon;
 }
 
 .old-stuff {
   border: 1px solid burlywood;
+} */
+
+#list-item {
+  border-radius: 5px;
 }
