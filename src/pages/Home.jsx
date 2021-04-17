@@ -7,7 +7,11 @@ import Lists from "./Lists";
 const Home = (props) => {
 
   const [input, setInput] = useState("")
+  const [item, setItem] = useState("")
 
+  const [list, setList] = useState([])
+
+  // newList rendering on page
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -22,9 +26,7 @@ const Home = (props) => {
     setInput("");
   }
 
-  const [list, setList] = useState({
-    
-  })
+  
 
   return(
     <div>      
@@ -51,7 +53,12 @@ const Home = (props) => {
               value={input}
             />
 
-            <input type="submit" id="button" value="add item to new list" />
+            <input 
+              type="submit" 
+              id="button" 
+              value="add item to new list"               
+            />
+
           </form>
         </section>
         
