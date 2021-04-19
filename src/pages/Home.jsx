@@ -1,72 +1,55 @@
-// useEffect for axios grab lists from db
-import {useEffect, useState} from "react"
-import Lists from "./Lists";
-// map to user interface element (list/home tag/component)
+import {useState, useEffect} from "react"
+import Navbar from "../components/Navbar"
+import CurrentList from "./CurrentList"
+
+import Item from "./Item"
+import '../index.css';
+import Welcome from "./Welcome";
+import Header from "./Header";
 
 
-const Home = (props) => {
-
-  const [input, setInput] = useState("")
-  const [item, setItem] = useState("")
-
-  const [list, setList] = useState([])
-
-  // newList rendering on page
-
-  const handleChange = e => {
-    setInput(e.target.value);
-
-  }
+const Home = () => {
+  const initialState = JSON.parse(localStorage.getItem("items")) || [];
+  const [input, setInput] = useState("");
+  const [items, setItems] = useState(initialState);
+  const [editItem, setEditItem] = useState(null);
   
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(input)
-    
-    setInput("");
-  }
-
   
-
-  return(
-    <div>      
-      <section>
-        <h2>Hi user 👥, new list or running off with an established one? </h2>
-      </section>
-
-      <div className="list-container">
-        <section className="old-stuff">
-          <div>
-              <Lists />
-          </div>          
-        </section>
-        
-        <section className="new-stuff">          
-          <form onSubmit={handleSubmit}>
-
-            <label htmlFor="list-item" />
-            <input 
-              type="text" 
-              id="list-item" 
-              placeholder="add an item" 
-              onChange={handleChange}
-              value={input}
-            />
-
-            <input 
-              type="submit" 
-              id="button" 
-              value="add item to new list"               
-            />
-
-          </form>
-        </section>
-        
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items))    
+  }, [items])
+  
+  
+  return (
+    <div className="container">
+      <div>
+        <Navbar />        
       </div>
-    </div>
-
-
-  )
+      <div>
+        <Header />        
+      </div>
+      <div className="app-wrapper">        
+          <form 
+            input={input}
+            setInput={setInput}
+            items={items}
+            setItems={setItems}
+            editItem={editItem}
+            setEditItem={setEditItem}
+          />
+        </div>
+        <div>
+          <CurrentList 
+            items={items} 
+            setItems={setItems}
+            editItem={editItem}
+            setEditItem={setEditItem}  
+            input={input}
+            setInput={setInput}         
+          />
+        </div>
+      </div>
+  );
 }
 
-export default Home
+export default Home;

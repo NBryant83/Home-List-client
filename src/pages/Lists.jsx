@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react"
+import Link from "react-router-dom"
 import Home from "./Home"
+import Item from "./Item"
 import axios from "axios"
+
 
 // pull in user's lists as an array
 
@@ -11,29 +14,30 @@ import axios from "axios"
 const Lists = (props) => {
   // set state
   const [lists, setLists] = useState([])
-  const [server, setServer] = useState(null)
+  
   // need to bring in and map all lists from db
   
   // 
   useEffect(async () => {
-    const response = await axios.get(process.env.REACT_APP_SERVER_URL)
-    console.log(response)
-    // setServer(response.data.msg)
-    setLists(lists)    
+    const response = await axios.get(process.env.REACT_APP_SERVER_URL + "/lists")
+    // console.log(response)
+    
+    
+    setLists(response.data)
   }, [])
   
 
   // maps through array in state and renders each as list item
-  // lists wasn't array, it wasn't working
+  
   const displayLists = lists.length > 0 ? lists.map((list, idx) => 
-      <li key={idx}>{list}</li>      
+      <li 
+        key={idx}>{list.title}</li>      
     ) : ""
 
   return(
     <div>
-      <p>this is a test</p>
-      <ul>{displayLists}</ul>
-      {/* <p>{server ?? "nothing here"}</p> */}
+      <p>📃 Lists:</p>
+      <ul>{displayLists}</ul>      
     </div>
   )
 }
